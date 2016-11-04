@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { LocalStorageService } from "../core/local-storage.service";
 import { EmployeeService } from "../core/employee.service";
 import {Employee} from "../shared/employee.model";
+import {Subscription} from "rxjs";
 
 @Component({
   templateUrl: 'account.component.html',
   styleUrls: ['account.component.css']
 })
-export class AccountComponent implements OnInit {
+export class AccountComponent implements OnInit, OnDestroy {
   /*employeeDetails: Employee = new Employee(0, "", "", "", "",
     {
       "id": 0,
@@ -32,6 +33,8 @@ export class AccountComponent implements OnInit {
   );*/
 
   employeeDetails: Employee = new Employee();
+  subscription: Subscription;
+  isLoading: boolean = true;
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -39,11 +42,16 @@ export class AccountComponent implements OnInit {
 
   ngOnInit() {
     let loggedUser = this.localStorageService.getItem('loggedUser');
-    this.employeeService.getEmployeeDetails(loggedUser.user_id)
+    this.subscription = this.employeeService.getEmployeeDetails(loggedUser.user_id)
       .subscribe(
         data => this.employeeDetails = data,
-        error => console.log(error)
+        error => console.log(error),
+        () => this.isLoading = false
       );
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

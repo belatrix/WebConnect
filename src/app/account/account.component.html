@@ -1,11 +1,16 @@
-<div>
-  <img [src]="employeeDetails.avatar" />
+<div *ngIf="isLoading">
+  Loading infooooo...
 </div>
-<div>
-  {{employeeDetails.first_name}} {{employeeDetails.last_name}}
-</div>
-<div>
-  {{employeeDetails.skype_id}}
+<div *ngIf="!isLoading">
+  <div>
+    <img [src]="employeeDetails.avatar" />
+  </div>
+  <div>
+    {{employeeDetails.first_name}} {{employeeDetails.last_name}}
+  </div>
+  <div>
+    {{employeeDetails.skype_id}}
+  </div>
 </div>
 <br>
 <app-recommendation-button></app-recommendation-button>
