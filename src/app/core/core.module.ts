@@ -5,6 +5,7 @@ import {AuthenticationGuard} from "./authentication.guard";
 import { AuthenticationService } from '../core/authentication.service';
 import {LocalStorageService} from "./local-storage.service";
 import {EmployeeService} from "./employee.service";
+import {EventService} from "./event.service";
 
 @NgModule({
   imports: [CommonModule],
@@ -13,7 +14,8 @@ import {EmployeeService} from "./employee.service";
     AuthenticationGuard,
     AuthenticationService,
     LocalStorageService,
-    EmployeeService
+    EmployeeService,
+    EventService
   ],
   exports: []
 })

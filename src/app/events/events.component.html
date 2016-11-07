@@ -1,4 +1,18 @@
-<app-header [title]="title"></app-header>
-<p>
-  events works!
-</p>
+<app-header [title]="'Events'"></app-header>
+
+<div *ngIf="isLoading">
+  Loading...
+</div>
+<div *ngIf="!isLoading">
+  <div *ngFor="let event of eventList">
+    <div>
+      <img [src]="event.image" />
+    </div>
+    <div>
+      {{event.title}}
+    </div>
+    <div>
+      {{event.description}}
+    </div>
+  </div>
+</div>
