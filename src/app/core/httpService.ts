@@ -10,14 +10,14 @@ export class HttpService {
 
     constructor(private http: Http, private localStorage: LocalStorageService) { }
 
-    get(url: string) {
+    get<T>(url: string): Observable<T> {
         let loggedUser = this.localStorage.getItem('loggedUser');
         let headers = new Headers({'Authorization': 'Token ' + loggedUser.token});
         let options = new RequestOptions({headers: headers});
 
         return this.http.get(this.baseUrl + url, options)
-        .map((res: Response) => res.json())
-        .catch((error: any) => Observable.throw(error.json().error || 'Server Error')
+            .map<T>((res: Response) => res.json())
+            .catch((error: any) => Observable.throw(error.json().error || 'Server Error')
         );
     }
 }

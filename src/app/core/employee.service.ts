@@ -13,6 +13,6 @@ export class EmployeeService {
   getEmployeeDetails(id: number): Observable<Employee> {
     let loggedUser = this.localStorage.getItem('loggedUser');
 
-    return this.httpService.get('employee/' + id + '/');
+    return this.httpService.get<Employee>('employee/' + id + '/');
   }
 }

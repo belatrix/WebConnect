@@ -11,7 +11,7 @@ export class EventService {
   }
 
   getEventList(): Observable<EventSearchResponse> {
-    return this.httpService.get('event/list/');
+    return this.httpService.get<EventSearchResponse>('event/list/');
   }
 
 }

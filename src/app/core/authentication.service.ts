@@ -5,17 +5,18 @@ import {Observable} from "rxjs";
 
 import {User} from "../shared/user.model";
 import {LocalStorageService} from "./local-storage.service";
+import {HttpService} from "./httpService";
 
 @Injectable()
 export class AuthenticationService {
   redirectUrl: string;
   private loggedIn: boolean = false;
-  private url: string = 'http://belatrix-connect.herokuapp.com:80/api/';
 
   constructor(
     private http: Http,
     private localStorageService: LocalStorageService,
-    private router: Router
+    private router: Router,
+    private httpService: HttpService
   ) {
     let loggedUser = this.localStorageService.getItem('loggedUser');
     this.loggedIn = !!loggedUser;
@@ -26,7 +27,7 @@ export class AuthenticationService {
     let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded'});
     let options = new RequestOptions({headers: headers});
 
-    return this.http.post(this.url + 'employee/authenticate/', credentials, options)
+    return this.http.post(this.httpService.baseUrl + 'employee/authenticate/', credentials, options)
       .map((res: Response) => res.json())
       .map((res) => {
         if (res) {
