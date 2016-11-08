@@ -10,7 +10,7 @@ export class EventService {
   constructor(private httpService: HttpService) {
   }
 
-  getEventList(): Observable<EventSearchResponse> {
+  getEventList(): Promise<EventSearchResponse> {
     return this.httpService.get<EventSearchResponse>('event/list/');
   }
 

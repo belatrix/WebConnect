@@ -10,7 +10,7 @@ export class EmployeeService {
 
   constructor(private httpService: HttpService, private localStorage: LocalStorageService) { }
 
-  getEmployeeDetails(id: number): Observable<Employee> {
+  getEmployeeDetails(id: number): Promise<Employee> {
     let loggedUser = this.localStorage.getItem('loggedUser');
 
     return this.httpService.get<Employee>('employee/' + id + '/');
