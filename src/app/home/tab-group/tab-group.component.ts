@@ -20,18 +20,19 @@ export class TabGroupComponent implements OnInit {
   }
 
   public changeTab(e) {
+    const _home = "/home";
     switch (e.index) {
       case 0:
-        this.router.navigateByUrl('/account');
+        this.router.navigateByUrl(_home+'/account');
         break;
       case 1:
-        this.router.navigateByUrl('/ranking');
+        this.router.navigateByUrl(_home+'/ranking');
         break;
       case 2:
-        this.router.navigateByUrl('/activity');
+        this.router.navigateByUrl(_home+'/activity');
         break;
       case 3:
-        this.router.navigateByUrl('/top-tags');
+        this.router.navigateByUrl(_home+'/top-tags');
         break;
       default:
         // TODO, navigate to 404 page

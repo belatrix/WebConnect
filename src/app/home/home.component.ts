@@ -6,7 +6,6 @@ import {AuthenticationService} from "../core/authentication.service";
   template: `
   <app-tab-group></app-tab-group>
   <router-outlet></router-outlet>
-  <button (click)="logOut()">Log Out</button>
   `
 })
 export class HomeComponent implements OnInit {

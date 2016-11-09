@@ -1,10 +1,11 @@
 <md-sidenav-layout>
   <md-sidenav #sidenav mode="side" class="app-sidenav">
-    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+    <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
     <a routerLink="/contacts" routerLinkActive="active">Contacts</a>
     <a routerLink="/events" routerLinkActive="active">Events</a>
     <a routerLink="/about" routerLinkActive="active">About</a>
     <a routerLink="/settings" routerLinkActive="active">Settings</a>
+    <button (click)="logOut()">Log Out</button>
   </md-sidenav>
 
   <md-toolbar color="primary" class="md-primary">

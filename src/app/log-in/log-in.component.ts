@@ -21,7 +21,7 @@ export class LogInComponent implements OnInit {
       .subscribe(() => {
         if (this.authenticationService.isLoggedIn()) {
           // this.router.navigate(['']);
-          let redirect = this.authenticationService.redirectUrl ? this.authenticationService.redirectUrl : '';
+          let redirect = this.authenticationService.redirectUrl ? this.authenticationService.redirectUrl : '/home';
           this.router.navigate([redirect]);
         }
       });

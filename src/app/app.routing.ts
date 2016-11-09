@@ -20,7 +20,6 @@ const APP_ROUTES: Routes = [
   {path: 'recommendation', component: RecommendationComponent, canActivate: [AuthenticationGuard]},
   {path: 'events', component: EventsComponent, canActivate: [AuthenticationGuard]},
   {path: 'settings', component: SettingsComponent, canActivate: [AuthenticationGuard]},
-  {path: '', component: HomeComponent },
   {path: '', redirectTo: '/login', pathMatch: 'full'}
   /*{ path: '**', component: PageNotFoundComponent }*/
 ];
