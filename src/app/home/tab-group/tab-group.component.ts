@@ -7,9 +7,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./tab-group.component.css']
 })
 export class TabGroupComponent implements OnInit {
+
+  // TODO, use <nav md-tab-nav-bar> with <a md-tab-link .. </a>
+  // just for tab with routes. This will also allow us to make a dynamic tabnav.
+  // https://github.com/angular/material2/issues/524
+
   constructor(
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
   }
@@ -28,8 +33,7 @@ export class TabGroupComponent implements OnInit {
       case 3:
         this.router.navigateByUrl('/top-tags');
         break;
-
-    default:
+      default:
         // TODO, navigate to 404 page
         break;
     }
