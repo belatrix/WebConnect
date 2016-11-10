@@ -2,15 +2,52 @@
   Loading infooooo...
 </div>
 <div *ngIf="!isLoading">
+  <!-- User info -->
   <div>
-    <img [src]="employeeDetails.avatar" />
+    <div>
+      <img [src]="employeeDetails.avatar" />
+    </div>
+    <div>
+      {{employeeDetails.first_name}} {{employeeDetails.last_name}}
+    </div>
+    <div>
+      {{employeeDetails.email}}
+    </div>
+    <div>
+      {{employeeDetails.skype_id}}
+    </div>
+    <div>
+      {{employeeDetails.location.name}}
+    </div>
   </div>
+
+  <!-- Star ranking -->
   <div>
-    {{employeeDetails.first_name}} {{employeeDetails.last_name}}
+    <table>
+      <tr>
+        <td>
+          Month score
+          {{employeeDetails.current_month_score}}
+        </td>
+        <td>
+          Score
+          {{employeeDetails.total_score}}
+        </td>
+        <td>
+          Level
+          {{employeeDetails.level}}
+        </td>
+      </tr>
+    </table>
   </div>
+
+  <!-- Star details -->
   <div>
-    {{employeeDetails.skype_id}}
   </div>
+
+
+
 </div>
+
 <br>
 <app-recommendation-button></app-recommendation-button>
