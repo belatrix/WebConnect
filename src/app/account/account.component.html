@@ -2,7 +2,7 @@
   Loading infooooo...
 </div>
 <div *ngIf="!isLoading">
-  <!-- User info -->
+
   <div>
     <div>
       <img [src]="employeeDetails.avatar" />
@@ -21,31 +21,8 @@
     </div>
   </div>
 
-  <!-- Star ranking -->
-  <div>
-    <table>
-      <tr>
-        <td>
-          Month score
-          {{employeeDetails.current_month_score}}
-        </td>
-        <td>
-          Score
-          {{employeeDetails.total_score}}
-        </td>
-        <td>
-          Level
-          {{employeeDetails.level}}
-        </td>
-      </tr>
-    </table>
-  </div>
-
-  <!-- Star details -->
-  <div>
-  </div>
-
-
+  <app-ranking-detail [ranking]="employeeDetails"></app-ranking-detail>
+  <app-star-detail [stars]="employeeStarList"></app-star-detail>
 
 </div>
 

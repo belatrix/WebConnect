@@ -1,0 +1,31 @@
+<!-- HEADER -->
+<md-grid-list cols="4" rowHeight="30px">
+  <md-grid-tile [colspan]="1" [rowspan]="1">
+    Coworker
+  </md-grid-tile>
+  <md-grid-tile [colspan]="1" [rowspan]="1">
+    Category
+  </md-grid-tile>
+  <md-grid-tile [colspan]="1" [rowspan]="1">
+    Tag
+  </md-grid-tile>
+  <md-grid-tile [colspan]="1" [rowspan]="1">
+    Date
+  </md-grid-tile>
+</md-grid-list>
+
+  <!-- DATA -->
+<md-grid-list *ngFor="let item of stars" cols="4" rowHeight="15px">
+  <md-grid-tile [colspan]="1" [rowspan]="1">
+    {{item.from_user.username}}
+  </md-grid-tile>
+  <md-grid-tile [colspan]="1" [rowspan]="1">
+    {{item.category}}
+  </md-grid-tile>
+  <md-grid-tile [colspan]="1" [rowspan]="1">
+    {{item.keyword.name}}
+  </md-grid-tile>
+  <md-grid-tile [colspan]="1" [rowspan]="1">
+    {{item.date}}
+  </md-grid-tile>
+</md-grid-list>

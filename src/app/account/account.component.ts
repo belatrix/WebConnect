@@ -9,29 +9,8 @@ import { Employee } from "../shared/employee.model";
   styleUrls: ['account.component.css']
 })
 export class AccountComponent implements OnInit {
-  /*employeeDetails: Employee = new Employee(0, "", "", "", "",
-    {
-      "id": 0,
-      "name": "",
-      "icon": ""
-    },
-    "",
-    "",
-    false,
-    false,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    false,
-    false,
-    "",
-    0
-  );*/
-
   employeeDetails: Employee = new Employee();
+  employeeStarList;
   isLoading: boolean = true;
 
   constructor(
@@ -40,12 +19,16 @@ export class AccountComponent implements OnInit {
 
   ngOnInit() {
     let loggedUser = this.localStorageService.getItem('loggedUser');
-    this.employeeService.getEmployeeDetails(loggedUser.user_id)
-      .then(data => {
-        this.employeeDetails = data;
+    let employeeDetailsP = this.employeeService.getEmployeeDetails(loggedUser.user_id);
+    let employeestarListP = this.employeeService.getEmployeeStarList(loggedUser.user_id);
+
+    Promise.all([employeeDetailsP, employeestarListP])
+      .then(values => {
+        console.log(values);
+        this.employeeDetails = values[0];
+        this.employeeStarList = values[1].results;
         this.isLoading = false;
       })
       .catch(error => console.log("error"));
   }
-
 }

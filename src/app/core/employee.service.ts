@@ -3,7 +3,8 @@ import {Http, Response, RequestOptions, Headers} from "@angular/http";
 import {Observable} from "rxjs";
 import {LocalStorageService} from "./local-storage.service";
 import {Employee} from "../shared/employee.model";
-import {HttpService} from "./httpService";
+import {StarDetail} from "../shared/star-detail.model";
+import {HttpService, ListSearchResponse} from "./httpService";
 
 @Injectable()
 export class EmployeeService {
@@ -22,6 +23,6 @@ export class EmployeeService {
   }
 
   getEmployeeStarList(id: number) {
-    return this.httpService.get<Employee>('star/' + id + '/list/');
+    return this.httpService.get<any>('star/' + id + '/list/');
   }
 }
