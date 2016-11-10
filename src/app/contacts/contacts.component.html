@@ -1,4 +1,16 @@
 <app-header [title]="title"></app-header>
-<p>
-  contacts works!
-</p>
+<md-input placeholder="Search" [(ngModel)]="searchText">
+</md-input>
+<button md-icon-button (click)="search()">
+    <md-icon class="md-24">search</md-icon>
+</button>
+<div *ngIf="isLoading">
+  Loading...
+</div>
+<div *ngIf="!isLoading">
+  <div *ngFor="let employee of employeeList">
+    <div>
+      {{employee.first_name + ' ' + employee.last_name}}
+    </div>
+  </div>
+</div>

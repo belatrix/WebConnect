@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { LocalStorageService } from "../core/local-storage.service";
 import { EmployeeService } from "../core/employee.service";
-import {Employee} from "../shared/employee.model";
+import { Employee } from "../shared/employee.model";
 
 @Component({
   templateUrl: 'account.component.html',

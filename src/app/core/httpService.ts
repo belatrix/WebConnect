@@ -26,3 +26,9 @@ export class HttpService {
         return Promise.reject(error.message || error);
     }
 }
+
+export class ListSearchResponse<T> {
+  constructor(
+    public results: Array<T>
+  ) {}
+}
