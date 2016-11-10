@@ -7,9 +7,13 @@
   Loading...
 </div>
 <div *ngIf="!isLoading">
-  <div *ngFor="let employee of employeeList">
-    <div>
-      {{employee.first_name + ' ' + employee.last_name}}
-    </div>
-  </div>
+  <md-list>
+    <md-list-item *ngFor="let employee of employeeList">
+      <img md-list-avatar [src]="employee.avatar" alt="img">
+      <h3 md-line> {{employee.first_name + ' ' + employee.last_name}} </h3>
+      <p md-line>
+        <span> {{employee.email}} </span>
+      </p>
+    </md-list-item>
+  </md-list>
 </div>
