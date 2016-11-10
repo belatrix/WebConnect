@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from "../core/local-storage.service";
 import { EmployeeService } from "../core/employee.service";
 import { Employee } from "../shared/employee.model";
+import { SharedDataService } from "../core/sharedData.service";
 
 @Component({
   templateUrl: './contacts.component.html',
@@ -10,16 +11,17 @@ import { Employee } from "../shared/employee.model";
 })
 export class ContactsComponent implements OnInit {
 
-  title: string = 'Contacts';
   employeeList: Employee[] = new Array<Employee>();
   isLoading: boolean = false;
   searchText: string = '';
 
   constructor(
     private localStorageService: LocalStorageService,
-    private employeeService: EmployeeService) { }
+    private employeeService: EmployeeService,
+    private sharedDataService: SharedDataService) { }
 
   ngOnInit() {
+    this.sharedDataService.sharedData.title  = "Contacts";
     this.search();
   }
 

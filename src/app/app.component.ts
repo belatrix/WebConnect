@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+
 import { AuthenticationService } from "./core/authentication.service";
+import { SharedDataService } from "./core/sharedData.service";
 
 @Component({
   selector: 'app-root',
@@ -8,9 +10,18 @@ import { AuthenticationService } from "./core/authentication.service";
 })
 export class AppComponent {
 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(private authenticationService: AuthenticationService, private sharedDataService: SharedDataService) { }
 
   logOut() {
     this.authenticationService.logOut();
   }
+
+  isLoggedIn() {
+    return this.authenticationService.isLoggedIn();
+  }
+
+  title() {
+    return this.sharedDataService.sharedData.title;
+  }
+
 }

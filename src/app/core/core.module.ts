@@ -7,6 +7,7 @@ import {LocalStorageService} from "./local-storage.service";
 import {EmployeeService} from "./employee.service";
 import {EventService} from "./event.service";
 import {HttpService} from "./httpService";
+import { SharedDataService } from "./sharedData.service";
 
 @NgModule({
   imports: [CommonModule],
@@ -17,7 +18,8 @@ import {HttpService} from "./httpService";
     LocalStorageService,
     EmployeeService,
     EventService,
-    HttpService
+    HttpService,
+    SharedDataService
   ],
   exports: []
 })

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { LocalStorageService } from "../core/local-storage.service";
 import { EventService } from "../core/event.service";
-import {Event} from "../shared/event.model";
+import { Event } from "../shared/event.model";
+import { SharedDataService } from "../core/sharedData.service";
 
 @Component({
   templateUrl: './events.component.html',
@@ -15,9 +16,11 @@ export class EventsComponent implements OnInit {
 
   constructor(
     private localStorageService: LocalStorageService,
-    private eventService: EventService) { }
+    private eventService: EventService,
+    private sharedDataService: SharedDataService) { }
 
   ngOnInit() {
+    this.sharedDataService.sharedData.title  = "Events";
     let loggedUser = this.localStorageService.getItem('loggedUser');
     this.eventService.getEventList()
       .then(data => {
