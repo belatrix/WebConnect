@@ -1,20 +1,34 @@
 <md-sidenav-layout>
-  <md-sidenav #sidenav mode="side" class="app-sidenav" [opened]="isLoggedIn()">
+  <md-sidenav #sidenav mode="side" class="app-sidenav">
     <span>Belatrix Connect</span>
-    <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-    <a routerLink="/contacts" routerLinkActive="active">Contacts</a>
-    <a routerLink="/events" routerLinkActive="active">Events</a>
-    <a routerLink="/about" routerLinkActive="active">About</a>
-    <a routerLink="/settings" routerLinkActive="active">Settings</a>
-    <button (click)="logOut()">Log Out</button>
+    <md-list>
+      <md-list-item>
+        <a md-button routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+      </md-list-item>
+      <md-list-item>
+        <a md-button routerLink="/contacts" routerLinkActive="active">Contacts</a>
+      </md-list-item>
+      <md-list-item>
+        <a md-button routerLink="/events" routerLinkActive="active">Events</a>
+      </md-list-item>
+      <md-list-item>
+        <a md-button routerLink="/about" routerLinkActive="active">About</a>
+      </md-list-item>
+      <md-list-item>
+        <a md-button routerLink="/settings" routerLinkActive="active">Settings</a>
+      </md-list-item>
+      <md-list-item>
+        <button md-button (click)="logOut()">Log Out</button>
+      </md-list-item>
+    </md-list>
   </md-sidenav>
 
-  <md-toolbar color="primary" class="md-primary">
-    <button class="app-icon-button" (click)="sidenav.toggle()" [hidden]="true">
+  <md-toolbar color="primary">
+    <button class="app-icon-button" (click)="sidenav.toggle()">
       <i class="material-icons app-toolbar-menu">menu</i>
     </button>
-    <span>-- {{title() || 'Belatrix Connect'}} --</span>
+    <span>{{title}}</span>
   </md-toolbar>
-  <router-outlet></router-outlet>
+  <router-outlet (activate)='onRouterOutletActivate($event)'></router-outlet>
 </md-sidenav-layout>
 

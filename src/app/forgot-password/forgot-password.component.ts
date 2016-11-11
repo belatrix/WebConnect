@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AppPage } from "../core/appPage";
+
 @Component({
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.css']
 })
-export class ForgotPasswordComponent implements OnInit {
+export class ForgotPasswordComponent extends AppPage implements OnInit {
 
-  constructor() { }
+  constructor() {
+    super('Forgot Password');
+   }
 
   ngOnInit() {
   }

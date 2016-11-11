@@ -4,12 +4,13 @@ import { LocalStorageService } from "../core/local-storage.service";
 import { EventService } from "../core/event.service";
 import { Event } from "../shared/event.model";
 import { SharedDataService } from "../core/sharedData.service";
+import { AppPage } from "../core/appPage";
 
 @Component({
   templateUrl: './events.component.html',
   styleUrls: ['./events.component.css']
 })
-export class EventsComponent implements OnInit {
+export class EventsComponent extends AppPage implements OnInit {
 
   eventList: Event[] = new Array<Event>();
   isLoading: boolean = true;
@@ -17,10 +18,11 @@ export class EventsComponent implements OnInit {
   constructor(
     private localStorageService: LocalStorageService,
     private eventService: EventService,
-    private sharedDataService: SharedDataService) { }
+    private sharedDataService: SharedDataService) {
+      super('Events');
+     }
 
   ngOnInit() {
-    this.sharedDataService.sharedData.title  = "Events";
     let loggedUser = this.localStorageService.getItem('loggedUser');
     this.eventService.getEventList()
       .then(data => {

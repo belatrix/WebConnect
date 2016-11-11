@@ -4,12 +4,13 @@ import { LocalStorageService } from "../core/local-storage.service";
 import { EmployeeService } from "../core/employee.service";
 import { Employee } from "../shared/employee.model";
 import { SharedDataService } from "../core/sharedData.service";
+import { AppPage } from "../core/appPage";
 
 @Component({
   templateUrl: './contacts.component.html',
   styleUrls: ['./contacts.component.css']
 })
-export class ContactsComponent implements OnInit {
+export class ContactsComponent extends AppPage implements OnInit {
 
   employeeList: Employee[] = new Array<Employee>();
   isLoading: boolean = false;
@@ -18,10 +19,11 @@ export class ContactsComponent implements OnInit {
   constructor(
     private localStorageService: LocalStorageService,
     private employeeService: EmployeeService,
-    private sharedDataService: SharedDataService) { }
+    private sharedDataService: SharedDataService) {
+      super('Contacts');
+     }
 
   ngOnInit() {
-    this.sharedDataService.sharedData.title  = "Contacts";
     this.search();
   }
 

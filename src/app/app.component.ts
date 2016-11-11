@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { AuthenticationService } from "./core/authentication.service";
 import { SharedDataService } from "./core/sharedData.service";
+import { AppPage } from "./core/appPage";
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,11 @@ import { SharedDataService } from "./core/sharedData.service";
 })
 export class AppComponent {
 
-  constructor(private authenticationService: AuthenticationService, private sharedDataService: SharedDataService) { }
+  title: string = '';
+
+  constructor(
+    private authenticationService: AuthenticationService,
+    private sharedDataService: SharedDataService) {}
 
   logOut() {
     this.authenticationService.logOut();
@@ -20,8 +25,14 @@ export class AppComponent {
     return this.authenticationService.isLoggedIn();
   }
 
-  title() {
-    return this.sharedDataService.sharedData.title;
+  onRouterOutletActivate(component) {
+    if (component instanceof AppPage) {
+      let appPage: AppPage = component;
+      this.title = appPage.title;
+    }
+    else {
+      this.title = 'Belatrix Connect';
+    }
   }
 
 }

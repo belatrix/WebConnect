@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthenticationService} from "../core/authentication.service";
+
+import { AuthenticationService } from "../core/authentication.service";
+import { AppPage } from "../core/appPage";
 
 @Component({
   selector: 'app-home',
@@ -8,9 +10,11 @@ import {AuthenticationService} from "../core/authentication.service";
   <router-outlet></router-outlet>
   `
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent extends AppPage implements OnInit {
 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(private authenticationService: AuthenticationService) {
+    super('Belatrix Connect');
+   }
 
   logOut() {
     this.authenticationService.logOut();
