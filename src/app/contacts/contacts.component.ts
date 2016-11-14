@@ -3,21 +3,25 @@ import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from "../core/local-storage.service";
 import { EmployeeService } from "../core/employee.service";
 import { Employee } from "../shared/employee.model";
+import { SharedDataService } from "../core/sharedData.service";
+import { AppPage } from "../core/appPage";
 
 @Component({
   templateUrl: './contacts.component.html',
   styleUrls: ['./contacts.component.css']
 })
-export class ContactsComponent implements OnInit {
+export class ContactsComponent extends AppPage implements OnInit {
 
-  title: string = 'Contacts';
   employeeList: Employee[] = new Array<Employee>();
   isLoading: boolean = false;
   searchText: string = '';
 
   constructor(
     private localStorageService: LocalStorageService,
-    private employeeService: EmployeeService) { }
+    private employeeService: EmployeeService,
+    private sharedDataService: SharedDataService) {
+      super('Contacts');
+     }
 
   ngOnInit() {
     this.search();

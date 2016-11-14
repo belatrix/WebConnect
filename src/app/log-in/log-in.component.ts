@@ -1,20 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from "@angular/forms";
-import {AuthenticationService} from "../core/authentication.service";
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+
+import { AuthenticationService } from "../core/authentication.service";
+import { AppPage } from "../core/appPage";
 
 @Component({
   templateUrl: './log-in.component.html',
   styleUrls: ['./log-in.component.css']
 })
-export class LogInComponent implements OnInit {
+export class LogInComponent extends AppPage implements OnInit {
   signInForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private authenticationService: AuthenticationService,
     private router: Router
-  ) { }
+  ) {
+    super('LogIn');
+   }
 
   logIn(){
     this.authenticationService.logIn(this.signInForm.value)

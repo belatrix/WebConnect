@@ -38,7 +38,8 @@ import { SharedModule } from "./shared/shared.module";
     CoreModule,
     HomeModule,
     SharedModule,
-    routing
+    routing,
+    MaterialModule.forRoot()
   ],
   providers: [MdIconRegistry],
   bootstrap: [AppComponent]
