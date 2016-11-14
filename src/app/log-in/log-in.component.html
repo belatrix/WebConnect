@@ -1,21 +1,13 @@
 <form [formGroup]="signInForm" (ngSubmit)="logIn()">
-  <div class="form-group">
-    <input formControlName="username"
-           type="text"
-           id="username"
-           placeholder="UserName"
-           class="form-control">
-  </div>
-  <div class="form-group">
-    <input formControlName="password"
-           type="password"
-           id="password"
-           placeholder="Password"
-           class="form-control">
-  </div>
+  <md-icon>person</md-icon>
+  <md-input formControlName="username" placeholder="User Name"></md-input><br>
+  <md-icon>https</md-icon>
+  <md-input formControlName="password" type="password" placeholder="Password"></md-input>
   <br>
-  <button type="submit" [disabled]="!signInForm.valid" class="btn btn-primary">LOG IN</button>
+  <button md-raised-button type="submit" [disabled]="!signInForm.valid" color="primary" >LOG IN</button>
 </form>
+<br>
+<span style="color:red">{{errorMessage}}</span>
 <hr>
 <a routerLink="/forgot-password">Forgot Password</a>
 <br>
