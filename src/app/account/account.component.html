@@ -3,24 +3,7 @@
 </div>
 <div *ngIf="!isLoading">
 
-  <div>
-    <div>
-      <img [src]="employeeDetails.avatar" />
-    </div>
-    <div>
-      {{employeeDetails.first_name}} {{employeeDetails.last_name}}
-    </div>
-    <div>
-      {{employeeDetails.email}}
-    </div>
-    <div>
-      {{employeeDetails.skype_id}}
-    </div>
-    <div>
-      {{employeeDetails.location.name}}
-    </div>
-  </div>
-
+  <app-user-info [user]="employeeDetails"></app-user-info>
   <app-ranking-detail [ranking]="employeeDetails"></app-ranking-detail>
   <app-star-detail [stars]="employeeStarList"></app-star-detail>
 

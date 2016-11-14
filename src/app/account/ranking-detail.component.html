@@ -1,17 +1,24 @@
-<md-grid-list cols="3" rowHeight="50px">
-  <md-grid-tile [colspan]="1" [rowspan]="1">
-    Month score
-    <br />
-    {{ranking.current_month_score}}
-  </md-grid-tile>
-  <md-grid-tile [colspan]="1" [rowspan]="1">
-    Score
-    <br />
-    {{ranking.total_score}}
-  </md-grid-tile>
-  <md-grid-tile [colspan]="1" [rowspan]="1">
-    Level
-    <br />
-    {{ranking.level}}
-  </md-grid-tile>
-</md-grid-list>
+<div class="ranking-detail">
+  <md-grid-list cols="3" rowHeight="50px" gutterSize="5px">
+    <md-grid-tile [colspan]="1" [rowspan]="1">
+      Month score
+    </md-grid-tile>
+    <md-grid-tile [colspan]="1" [rowspan]="1">
+      Score
+    </md-grid-tile>
+    <md-grid-tile [colspan]="1" [rowspan]="1">
+      Level
+    </md-grid-tile>
+  </md-grid-list>
+  <md-grid-list cols="3" rowHeight="50px" gutterSize="5px">
+    <md-grid-tile [colspan]="1" [rowspan]="1">
+      {{ranking.current_month_score}}
+    </md-grid-tile>
+    <md-grid-tile [colspan]="1" [rowspan]="1">
+      {{ranking.total_score}}
+    </md-grid-tile>
+    <md-grid-tile [colspan]="1" [rowspan]="1">
+      {{ranking.level}}
+    </md-grid-tile>
+  </md-grid-list>
+</div>
