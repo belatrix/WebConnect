@@ -12,6 +12,8 @@ import { AppPage } from "./core/appPage";
 export class AppComponent {
 
   title: string = '';
+  showToolBar: boolean = false;
+  showSideBar: boolean = false;
 
   constructor(
     private authenticationService: AuthenticationService,
@@ -26,13 +28,19 @@ export class AppComponent {
   }
 
   onRouterOutletActivate(component) {
+    this.title = 'Belatrix Connect';
+    this.showToolBar = true;
     if (component instanceof AppPage) {
       let appPage: AppPage = component;
       this.title = appPage.title;
+      if (appPage.isPublicPage) {
+        this.showToolBar = false;
+      }
     }
-    else {
-      this.title = 'Belatrix Connect';
-    }
+  }
+
+  onMenuClick() {
+    this.showSideBar = !this.showSideBar;
   }
 
 }

@@ -10,6 +10,7 @@ export class RegisterComponent extends AppPage implements OnInit {
 
   constructor() {
     super('Register');
+    this.isPublicPage = true;
    }
 
   ngOnInit() {

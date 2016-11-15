@@ -1,5 +1,5 @@
 <md-sidenav-layout>
-  <md-sidenav #sidenav mode="side" class="app-sidenav">
+  <md-sidenav #sidenav mode="side" class="app-sidenav" [opened]="showSideBar && showToolBar">
     <span>Belatrix Connect</span>
     <md-list>
       <md-list-item>
@@ -23,8 +23,8 @@
     </md-list>
   </md-sidenav>
 
-  <md-toolbar color="primary">
-    <button class="app-icon-button" (click)="sidenav.toggle()">
+  <md-toolbar color="primary" *ngIf="showToolBar">
+    <button class="app-icon-button" (click)="onMenuClick()">
       <i class="material-icons app-toolbar-menu">menu</i>
     </button>
     <span>{{title}}</span>

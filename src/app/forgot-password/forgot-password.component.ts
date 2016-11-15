@@ -10,6 +10,7 @@ export class ForgotPasswordComponent extends AppPage implements OnInit {
 
   constructor() {
     super('Forgot Password');
+    this.isPublicPage = true;
    }
 
   ngOnInit() {
