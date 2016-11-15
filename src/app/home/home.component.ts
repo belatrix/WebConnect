@@ -13,7 +13,7 @@ import { AppPage } from "../core/appPage";
   `,
   styles:[`
     .container{
-      width:980px;
+      width:100%;
       margin-left: auto;
       margin-right: auto;
     }
