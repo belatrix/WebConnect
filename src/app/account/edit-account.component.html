@@ -1,3 +1,37 @@
-<p>
-  edit-account works!
-</p>
+<md-card class="demo-card demo-basic">
+  <!-- <md-toolbar color="primary">Basic</md-toolbar> -->
+  <md-card-content>
+    <form [formGroup]="editAccountForm" (ngSubmit)="logIn()">
+      <!-- <md-input class="demo-full-width" placeholder="Company (disabled)" disabled value="Google">
+      </md-input> -->
+      <div class="image-container">
+        <img src="https://allstarsbx.s3.amazonaws.com/media/avatar/test1474905777.jpg" />
+      </div>
+
+
+      <md-input formControlName="firstname" class="demo-full-width" placeholder="First Name"></md-input>
+      <md-input formControlName="lastname" class="demo-full-width" placeholder="Last Name"></md-input>
+      <md-input formControlName="skypeid" class="demo-full-width" placeholder="Skype Id"></md-input>
+
+      <label for="">Location</label>
+
+      <md-radio-group>
+        <md-radio-button value="BSAS">
+          Buenos Aires
+        </md-radio-button>
+        <md-radio-button value="MZA">
+          Mendoza
+        </md-radio-button>
+        <md-radio-button value="LIM">
+          Lima
+        </md-radio-button>
+        <md-radio-button value="USA">
+          USA
+        </md-radio-button>
+      </md-radio-group>
+
+      <button md-raised-button color="primary" [disabled]="!editAccountForm.valid" type="submit">Submit</button>
+      <!-- <button md-raised-button color="primary">PRIMARY</button> -->
+    </form>
+  </md-card-content>
+</md-card>

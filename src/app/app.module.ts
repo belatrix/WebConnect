@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+//import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule, MdIconRegistry } from '@angular/material';
 
@@ -32,8 +32,7 @@ import { SharedModule } from "./shared/shared.module";
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
+
     HttpModule,
     CoreModule,
     HomeModule,

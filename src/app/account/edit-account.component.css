@@ -1,0 +1,17 @@
+md-radio-button, md-input {
+  display: block;
+}
+
+md-input{
+  margin-bottom: 30px;
+}
+
+md-card {
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.image-container {
+  text-align: center;
+}
