@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { LocalStorageService } from "../core/local-storage.service";
 import { EmployeeService } from "../core/employee.service";
@@ -18,13 +19,18 @@ export class ContactsComponent extends AppPage implements OnInit {
 
   constructor(
     private localStorageService: LocalStorageService,
+    private router: Router,
     private employeeService: EmployeeService,
     private sharedDataService: SharedDataService) {
       super('Contacts');
-     }
+    }
 
   ngOnInit() {
     this.search();
+  }
+
+  loadProfile(employee: Employee) {
+    this.router.navigateByUrl('/profile/'+employee.pk);
   }
 
   search() {

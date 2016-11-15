@@ -8,7 +8,7 @@
 </div>
 <div *ngIf="!isLoading">
   <md-list>
-    <md-list-item *ngFor="let employee of employeeList">
+    <md-list-item *ngFor="let employee of employeeList" (click)="loadProfile(employee)">
       <img md-list-avatar [src]="employee.avatar" alt="img">
       <h3 md-line>{{employee.first_name + ' ' + employee.last_name}}</h3>
       <p md-line>

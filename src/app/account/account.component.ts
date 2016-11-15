@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { LocalStorageService } from "../core/local-storage.service";
 import { EmployeeService } from "../core/employee.service";
@@ -15,12 +16,19 @@ export class AccountComponent implements OnInit {
 
   constructor(
     private localStorageService: LocalStorageService,
+    private router: Router,
+    private route: ActivatedRoute,
     private employeeService: EmployeeService) { }
 
   ngOnInit() {
-    let loggedUser = this.localStorageService.getItem('loggedUser');
-    let employeeDetailsP = this.employeeService.getEmployeeDetails(loggedUser.user_id);
-    let employeestarListP = this.employeeService.getEmployeeStarList(loggedUser.user_id);
+    let userPK;
+    if(this.route.snapshot.params['id'] !== undefined) {
+      userPK = this.route.snapshot.params['id'];
+    } else {
+      userPK = this.localStorageService.getItem('loggedUser').user_id
+    }
+    let employeeDetailsP = this.employeeService.getEmployeeDetails(userPK);
+    let employeestarListP = this.employeeService.getEmployeeStarList(userPK);
 
     Promise.all([employeeDetailsP, employeestarListP])
       .then(values => {
