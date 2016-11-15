@@ -19,6 +19,7 @@ export class LogInComponent extends AppPage implements OnInit {
     private router: Router
   ) {
     super('LogIn');
+    this.isPublicPage = true;
    }
 
   logIn(){
