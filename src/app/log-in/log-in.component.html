@@ -1,7 +1,7 @@
 <form [formGroup]="signInForm" (ngSubmit)="logIn()">
   <md-icon>person</md-icon>
   <md-input formControlName="username" placeholder="User Name"></md-input><br>
-  <md-icon>https</md-icon>
+  <md-icon>lock</md-icon>
   <md-input formControlName="password" type="password" placeholder="Password"></md-input>
   <br>
   <button md-raised-button type="submit" [disabled]="!signInForm.valid" color="primary" >LOG IN</button>

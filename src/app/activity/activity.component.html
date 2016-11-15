@@ -1,3 +1,14 @@
-<p>
-  activity works!
-</p>
+<div *ngIf="isLoading">
+  Loading...
+</div>
+<div *ngIf="!isLoading">
+  <md-list>
+    <md-list-item *ngFor="let notification of notificationList">
+      <md-icon md-list-avatar>check_box</md-icon>
+      <h3 md-line>{{notification.datetime}}</h3>
+      <p md-line>
+        <span>{{notification.text}}</span>
+      </p>
+    </md-list-item>
+  </md-list>
+</div>

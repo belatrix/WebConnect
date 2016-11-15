@@ -8,6 +8,7 @@ import {EmployeeService} from "./employee.service";
 import {EventService} from "./event.service";
 import {HttpService} from "./httpService";
 import { SharedDataService } from "./sharedData.service";
+import { ActivityService } from "./activity.service";
 
 @NgModule({
   imports: [CommonModule],
@@ -19,7 +20,8 @@ import { SharedDataService } from "./sharedData.service";
     EmployeeService,
     EventService,
     HttpService,
-    SharedDataService
+    SharedDataService,
+    ActivityService
   ],
   exports: []
 })
