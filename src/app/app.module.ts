@@ -18,6 +18,8 @@ import { SettingsComponent } from './settings/settings.component';
 import { HomeModule } from "./home/home.module";
 import { SharedModule } from "./shared/shared.module";
 
+//import { UPLOAD_DIRECTIVES } from 'ng2-uploader';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +34,6 @@ import { SharedModule } from "./shared/shared.module";
   ],
   imports: [
     BrowserModule,
-
     HttpModule,
     CoreModule,
     HomeModule,

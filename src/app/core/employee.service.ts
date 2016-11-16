@@ -13,7 +13,6 @@ export class EmployeeService {
 
   getEmployeeDetails(id: number): Promise<Employee> {
     let loggedUser = this.localStorage.getItem('loggedUser');
-
     return this.httpService.get<Employee>('employee/' + id + '/');
   }
 
@@ -24,5 +23,16 @@ export class EmployeeService {
 
   getEmployeeStarList(id: number) {
     return this.httpService.get<any>('star/' + id + '/list/');
+  }
+
+  /*
+  This endpoint update skype, first_name, last_name and location (location id)
+   */
+  updateEmployee(id, data) {
+    return this.httpService.patch<any>('employee/' + id + '/update/', data);
+  }
+
+  updateEmployeeAvatar(id: number) {
+    return this.httpService.post<any>('employee/' + id + '/avatar/');
   }
 }

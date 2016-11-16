@@ -45,7 +45,6 @@ export class AccountComponent implements OnInit {
   }
 
   loadEditProfile(pk: number) {
-    console.log(pk);
     this.router.navigateByUrl('/home/account/edit');
   }
 }

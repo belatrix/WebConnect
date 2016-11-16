@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { LocalStorageService } from "../core/local-storage.service";
+import { Router } from '@angular/router';
 
 import { Employee } from "../shared/employee.model";
 import { EmployeeService } from "../core/employee.service";
@@ -15,15 +16,26 @@ export class EditAccountComponent implements OnInit {
   employeeDetails: Employee;
   isLoading: boolean = true;
 
+  private zone: NgZone;
+  private basicOptions: Object;
+  private progress: number = 0;
+  private response: any = {};
+
   constructor(
     private fb: FormBuilder,
     private employeeService: EmployeeService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     let employee = this.localStorageService.getItem('loggedUser');
     let employeeDetailsP = this.employeeService.getEmployeeDetails(employee.user_id);
+
+    this.zone = new NgZone({ enableLongStackTrace: false });
+    this.basicOptions = {
+      url: 'http://belatrix-connect.herokuapp.com:80/api/employee/'+employee.user_id+'/avatar/'
+    };
 
     Promise.all([employeeDetailsP])
       .then(values => {
@@ -37,13 +49,38 @@ export class EditAccountComponent implements OnInit {
 
   initForm() {
     this.editAccountForm = this.fb.group({
-      firstname: [this.employeeDetails.first_name, Validators.required],
-      lastname : [this.employeeDetails.last_name, Validators.required],
-      skypeid  : [this.employeeDetails.skype_id, Validators.required]
+      first_name: [this.employeeDetails.first_name, Validators.required],
+      last_name : [this.employeeDetails.last_name, Validators.required],
+      skype_id  : [this.employeeDetails.skype_id, Validators.required],
+      location : [this.employeeDetails.location.id, Validators.required]
+    });
+  }
+
+  handleUpload(data: any): void {
+    this.zone.run(() => {
+      this.response = data;
+      this.progress = data.progress.percent / 100;
     });
   }
 
   submitForm() {
+    let accountChangesP;
+    let avatarChange;
+    let employee = this.localStorageService.getItem('loggedUser');
+    if('change on account') {
+      accountChangesP = this.employeeService.updateEmployee(employee.user_id, this.editAccountForm.value)
+    }
 
+    if('change on avatar') {
+      //accountChanges = this.employeeService.updateEmployee(accountData)
+    }
+
+    Promise.all([accountChangesP])
+      .then(values => {
+        // TODO, show confirmation modal
+        // hide a loading if present
+        this.router.navigateByUrl('/home/account');
+      })
+      .catch(error => console.log("error"));
   }
 }

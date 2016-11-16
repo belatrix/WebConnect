@@ -3,38 +3,48 @@
 </div>
 <div *ngIf="!isLoading">
   <md-card class="demo-card demo-basic">
-    <!-- <md-toolbar color="primary">Basic</md-toolbar> -->
     <md-card-content>
       <form [formGroup]="editAccountForm" (ngSubmit)="submitForm()">
-        <!-- <md-input class="demo-full-width" placeholder="Company (disabled)" disabled value="Google">
-        </md-input> -->
         <div class="image-container">
-          <img src="https://allstarsbx.s3.amazonaws.com/media/avatar/test1474905777.jpg" />
+          <!-- <img src="https://allstarsbx.s3.amazonaws.com/media/avatar/test1474905777.jpg" /> -->
+          <img [src]="employeeDetails.avatar" />
+
+          <input type="file" ngFileSelect [options]="basicOptions" (onUpload)="handleUpload($event)">
+
+          <div>
+            Response: {{ response | json }}
+          </div>
+
+          <div>
+            Progress: {{ progress }}%
+          </div>
+
         </div>
 
-        <md-input formControlName="firstname" class="demo-full-width" placeholder="First Name"></md-input>
-        <md-input formControlName="lastname" class="demo-full-width" placeholder="Last Name"></md-input>
-        <md-input formControlName="skypeid" class="demo-full-width" placeholder="Skype Id"></md-input>
+        <md-input formControlName="first_name" class="demo-full-width" placeholder="First Name"></md-input>
+        <md-input formControlName="last_name" class="demo-full-width" placeholder="Last Name"></md-input>
+        <md-input formControlName="skype_id" class="demo-full-width" placeholder="Skype Id"></md-input>
 
         <label for="">Location</label>
 
-        <md-radio-group>
+        <md-radio-group formControlName="location">
           <md-radio-button [checked]="employeeDetails.location.id == 1" value="1">
-            Buenos Aires
+            Lima
           </md-radio-button>
           <md-radio-button [checked]="employeeDetails.location.id == 2" value="2">
             Mendoza
           </md-radio-button>
           <md-radio-button [checked]="employeeDetails.location.id == 3" value="3">
-            Lima
+            Buenos Aires
           </md-radio-button>
           <md-radio-button [checked]="employeeDetails.location.id == 4" value="4">
             USA
           </md-radio-button>
         </md-radio-group>
 
-        <button md-raised-button color="primary" [disabled]="!editAccountForm.valid" type="submit">Submit</button>
-        <!-- <button md-raised-button color="primary">PRIMARY</button> -->
+        <div class="center">
+          <button md-raised-button color="primary" [disabled]="!editAccountForm.valid" type="submit">Submit</button>
+        </div>
       </form>
     </md-card-content>
   </md-card>
