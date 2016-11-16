@@ -3,6 +3,14 @@
 </div>
 <div *ngIf="!isLoading">
 
+  <!-- <md-icon *ngIf="isCurrentUser" md-list-avatar>create</md-icon> -->
+  <!-- <button *ngIf="isCurrentUser" md-mini-fab> -->
+
+  <button *ngIf="isCurrentUser" md-icon-button (click)="loadEditProfile(employeeDetails.pk)">
+    <!-- <md-icon class="md-24">create</md-icon> -->
+    <md-icon md-list-avatar>create</md-icon>
+  </button>
+
   <app-user-info [user]="employeeDetails"></app-user-info>
   <app-ranking-detail [ranking]="employeeDetails"></app-ranking-detail>
   <app-star-detail [stars]="employeeStarList"></app-star-detail>

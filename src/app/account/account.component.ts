@@ -13,6 +13,7 @@ export class AccountComponent implements OnInit {
   employeeDetails: Employee = new Employee();
   employeeStarList;
   isLoading: boolean = true;
+  isCurrentUser: boolean;
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -22,10 +23,13 @@ export class AccountComponent implements OnInit {
 
   ngOnInit() {
     let userPK;
-    if(this.route.snapshot.params['id'] !== undefined) {
-      userPK = this.route.snapshot.params['id'];
-    } else {
+    //this.isCurrentUser = this.route.snapshot.params['id'] !== undefined;
+    this.isCurrentUser = this.route.snapshot.url[0].path ? this.route.snapshot.url[0].path.toLowerCase().trim() == "account" : false;
+
+    if(this.isCurrentUser) {
       userPK = this.localStorageService.getItem('loggedUser').user_id
+    } else {
+      userPK = this.route.snapshot.params['id'];
     }
     let employeeDetailsP = this.employeeService.getEmployeeDetails(userPK);
     let employeestarListP = this.employeeService.getEmployeeStarList(userPK);
@@ -38,5 +42,10 @@ export class AccountComponent implements OnInit {
         this.isLoading = false;
       })
       .catch(error => console.log("error"));
+  }
+
+  loadEditProfile(pk: number) {
+    console.log(pk);
+    this.router.navigateByUrl('/home/account/edit');
   }
 }

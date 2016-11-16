@@ -1,5 +1,6 @@
 import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
 
 import { RecommendationButtonComponent } from './recommendation-button.component';
@@ -14,6 +15,8 @@ import { LoadingComponent } from './loading/loading.component';
   exports: [
     CommonModule,
     RecommendationButtonComponent,
+    FormsModule,
+    ReactiveFormsModule,
     HeaderComponent,
     BackButtonComponent,
     MaterialModule,
