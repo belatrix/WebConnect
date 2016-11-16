@@ -12,6 +12,7 @@ import { AppPage } from "../core/appPage";
 export class LogInComponent extends AppPage implements OnInit {
   signInForm: FormGroup;
   errorMessage: string = '';
+  isLoading: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -24,6 +25,7 @@ export class LogInComponent extends AppPage implements OnInit {
 
   logIn(){
     this.errorMessage = '';
+    this.isLoading = true;
     this.authenticationService.logIn(this.signInForm.value)
       .subscribe(() => {
         if (this.authenticationService.isLoggedIn()) {
@@ -32,7 +34,8 @@ export class LogInComponent extends AppPage implements OnInit {
           this.router.navigate([redirect]);
         }
       },
-      (error) => this.errorMessage = "Invalid credentials");
+      (error) => this.errorMessage = "Invalid credentials"),
+      () => this.isLoading = false;
   }
 
   ngOnInit(){

@@ -4,7 +4,7 @@
     <md-icon class="md-24">search</md-icon>
 </button>
 <div *ngIf="isLoading">
-  Loading...
+  <app-loading></app-loading>
 </div>
 <div *ngIf="!isLoading">
   <md-list>

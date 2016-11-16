@@ -5,17 +5,19 @@ import { MaterialModule } from '@angular/material';
 import { RecommendationButtonComponent } from './recommendation-button.component';
 import { HeaderComponent } from './header.component';
 import { BackButtonComponent } from './back-button.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [RecommendationButtonComponent, HeaderComponent, BackButtonComponent],
+  imports: [CommonModule, MaterialModule.forRoot()],
+  declarations: [RecommendationButtonComponent, HeaderComponent, BackButtonComponent, LoadingComponent],
   providers: [],
   exports: [
     CommonModule,
     RecommendationButtonComponent,
     HeaderComponent,
     BackButtonComponent,
-    MaterialModule
+    MaterialModule,
+    LoadingComponent
   ]
 })
 export class SharedModule { }

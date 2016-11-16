@@ -7,6 +7,9 @@
   <button md-raised-button type="submit" [disabled]="!signInForm.valid" color="primary" >LOG IN</button>
 </form>
 <br>
+<div [hidden]="!isLoading">
+  <md-progress-bar mode="indeterminate"></md-progress-bar>
+</div>
 <span style="color:red">{{errorMessage}}</span>
 <hr>
 <a routerLink="/forgot-password">Forgot Password</a>
