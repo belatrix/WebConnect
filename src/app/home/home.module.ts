@@ -31,8 +31,8 @@ import { SharedModule } from "../shared/shared.module";
   ],
   imports: [
     homeRoutes,
-    SharedModule,
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
   providers: []
 })
