@@ -1,4 +1,16 @@
-<p>
-  top-tags works!
-</p>
+<md-input placeholder="Search" [(ngModel)]="searchText">
+</md-input>
+<button md-icon-button (click)="search()">
+    <md-icon class="md-24">search</md-icon>
+</button>
+<div *ngIf="isLoading">
+  <app-loading></app-loading>
+</div>
+<div *ngIf="!isLoading">
+  <md-list>
+    <md-list-item *ngFor="let tag of tagsList">
+      {{tag.name}}
+    </md-list-item>
+  </md-list>
+</div>
 <app-recommendation-button></app-recommendation-button>
