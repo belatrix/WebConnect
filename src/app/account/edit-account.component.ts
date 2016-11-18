@@ -21,6 +21,9 @@ export class EditAccountComponent implements OnInit {
   private progress: number = 0;
   private response: any = {};
 
+  uploadFile: any;
+  hasBaseDropZoneOver: boolean = false;
+
   constructor(
     private fb: FormBuilder,
     private employeeService: EmployeeService,
@@ -34,7 +37,9 @@ export class EditAccountComponent implements OnInit {
 
     this.zone = new NgZone({ enableLongStackTrace: false });
     this.basicOptions = {
-      url: 'http://belatrix-connect.herokuapp.com:80/api/employee/'+employee.user_id+'/avatar/'
+      url: 'http://belatrix-connect.herokuapp.com:80/api/employee/'+employee.user_id+'/avatar',
+      authToken: employee.token,
+      authTokenPrefix: 'Token'
     };
 
     Promise.all([employeeDetailsP])

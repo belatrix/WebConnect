@@ -1,15 +1,15 @@
 <div *ngIf="isLoading">
-  Loading infooooo...
+  <app-loading></app-loading>
 </div>
 <div *ngIf="!isLoading">
   <md-card class="demo-card demo-basic">
     <md-card-content>
       <form [formGroup]="editAccountForm" (ngSubmit)="submitForm()">
         <div class="image-container">
-          <!-- <img src="https://allstarsbx.s3.amazonaws.com/media/avatar/test1474905777.jpg" /> -->
           <img [src]="employeeDetails.avatar" />
 
-          <input type="file" ngFileSelect [maxi]="basicOptions" (onUpload)="handleUpload($event)">
+
+          <input type="file" ngFileSelect [options]="basicOptions" (onUpload)="handleUpload($event)">
 
           <div>
             Response: {{ response | json }}
@@ -18,7 +18,6 @@
           <div>
             Progress: {{ progress }}%
           </div>
-
         </div>
 
         <md-input formControlName="first_name" class="demo-full-width" placeholder="First Name"></md-input>
