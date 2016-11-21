@@ -29,7 +29,12 @@ export class ContactsComponent extends AppPage implements OnInit {
     this.search();
   }
 
-  loadProfile(employee: Employee) {
+  onEmployeeClick(employee: Employee) {
+    if (this.sharedDataService.sharedData.contactsPage.selectUser) {
+      this.sharedDataService.sharedData.contactsPage.selectedUser = employee;
+      window.history.back();
+      return;
+    }
     this.router.navigateByUrl('/profile/'+employee.pk);
   }
 

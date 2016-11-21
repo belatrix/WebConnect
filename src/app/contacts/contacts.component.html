@@ -7,13 +7,13 @@
   <app-loading></app-loading>
 </div>
 <div *ngIf="!isLoading">
-  <md-list>
-    <md-list-item *ngFor="let employee of employeeList" (click)="loadProfile(employee)">
+  <md-nav-list>
+    <md-list-item *ngFor="let employee of employeeList" (click)="onEmployeeClick(employee)">
       <img md-list-avatar [src]="employee.avatar" alt="img">
       <h3 md-line>{{employee.first_name + ' ' + employee.last_name}}</h3>
       <p md-line>
         <span>lvl. {{employee.level}}</span>
       </p>
     </md-list-item>
-  </md-list>
+  </md-nav-list>
 </div>
