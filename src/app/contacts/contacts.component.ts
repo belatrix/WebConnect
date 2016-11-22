@@ -16,6 +16,7 @@ export class ContactsComponent extends AppPage implements OnInit {
   employeeList: Employee[] = new Array<Employee>();
   isLoading: boolean = false;
   searchText: string = '';
+  selectUser: boolean = false;
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -27,10 +28,21 @@ export class ContactsComponent extends AppPage implements OnInit {
 
   ngOnInit() {
     this.search();
+    if (this.sharedDataService.sharedData.contactsPage.selectUser) {
+      this.selectUser = true;
+      this.sharedDataService.sharedData.contactsPage.selectUser = false;
+    }
   }
 
-  loadProfile(employee: Employee) {
-    this.router.navigateByUrl('/profile/'+employee.pk);
+  onEmployeeClick(employee: Employee) {
+    if (this.selectUser) {
+      this.sharedDataService.sharedData.contactsPage.selectedUser = employee;
+      window.history.back();
+      return;
+    }
+    else {
+      this.router.navigateByUrl('/profile/'+employee.pk);
+    }
   }
 
   search() {

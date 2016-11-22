@@ -1,4 +1,10 @@
-<p>
-  recommendation works!
-</p>
+<md-nav-list>
+  <a md-list-item *ngIf="selectedUser == null" (click)="selectUser()">Select user</a>
+  <a md-list-item *ngIf="selectedUser != null" (click)="selectUser()">
+    <img md-list-avatar [src]="selectedUser.avatar">
+    <span md-line>{{selectedUser.first_name + ' ' + selectedUser.last_name}}</span>
+    <span md-line>lvl. {{selectedUser.level}}</span>
+  </a>
+</md-nav-list>
+
 <app-back-button></app-back-button>

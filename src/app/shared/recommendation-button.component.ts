@@ -4,9 +4,9 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'app-recommendation-button',
   template: `
-    <span class="position">
-      <button (click)="navigateTo()">+</button>
-    </span>  
+    <button md-fab (click)="navigateTo()" color="primary">
+      <md-icon class="md-24">add</md-icon>
+    </button>
   `,
   styleUrls: ['recommendation-button.component.css']
 })
