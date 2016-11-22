@@ -1,4 +1,26 @@
-<p>
-  ranking works!
-</p>
+<div *ngIf="isLoading">
+  <app-loading></app-loading>
+</div>
+<div *ngIf="!isLoading">
+  <md-tab-group (focusChange)="changeTab($event)">
+    <md-tab>
+      <template md-tab-label>Last month</template>
+      <template md-tab-content>
+        <app-ranking-item [source]="rankingList"></app-ranking-item>
+      </template>
+    </md-tab>
+    <md-tab>
+      <template md-tab-label>Current month</template>
+      <template md-tab-content>
+        <app-ranking-item [source]="rankingList"></app-ranking-item>
+      </template>
+    </md-tab>
+    <md-tab>
+      <template md-tab-label>All time</template>
+      <template md-tab-content>
+        <app-ranking-item [source]="rankingList"></app-ranking-item>
+      </template>
+    </md-tab>
+  </md-tab-group>
+</div>
 <app-recommendation-button></app-recommendation-button>

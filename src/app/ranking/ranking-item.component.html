@@ -1,0 +1,6 @@
+<md-grid-list md-ink-ripple="#FF0000" *ngFor="let employee of source; let i = index" cols="4" (click)="goToProfile(employee)" rowHeight="60px">
+  <md-grid-tile [colspan]="1" [rowspan]="1">{{i+1}}</md-grid-tile>
+  <md-grid-tile [colspan]="1" [rowspan]="1"> <img [src]="employee.avatar" height="60px"> </md-grid-tile>
+  <md-grid-tile [colspan]="1" [rowspan]="1">{{employee.username}}</md-grid-tile>
+  <md-grid-tile [colspan]="1" [rowspan]="1">{{employee.value}}</md-grid-tile>
+</md-grid-list>

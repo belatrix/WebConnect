@@ -8,16 +8,16 @@
         <div class="image-container">
           <img [src]="employeeDetails.avatar" />
 
-
-          <input type="file" ngFileSelect [options]="basicOptions" (onUpload)="handleUpload($event)">
-
+          <!-- <input type="file" ngFileSelect [options]="basicOptions" (onUpload)="handleUpload($event)">
           <div>
             Response: {{ response | json }}
           </div>
-
           <div>
             Progress: {{ progress }}%
-          </div>
+          </div> -->
+
+          <!-- <input type="file" ng2FileSelect [uploader]="uploader" /> -->
+
         </div>
 
         <md-input formControlName="first_name" class="demo-full-width" placeholder="First Name"></md-input>

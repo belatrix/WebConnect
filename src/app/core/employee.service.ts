@@ -32,7 +32,12 @@ export class EmployeeService {
     return this.httpService.patch<any>('employee/' + id + '/update/', data);
   }
 
-  updateEmployeeAvatar(id: number) {
-    return this.httpService.post<any>('employee/' + id + '/avatar/');
+  /*Not tested yet, using ng-uploader direcive not working*/
+  // updateEmployeeAvatar(id: number) {
+  //   return this.httpService.post<any>('employee/' + id + '/avatar/');
+  // }
+
+  getTopEmployeeList(tag, qty) {
+    return this.httpService.get<any>('employee/list/top/' + tag + '/'+qty+'/');
   }
 }

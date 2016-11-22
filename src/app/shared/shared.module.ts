@@ -2,7 +2,12 @@ import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
-import { UPLOAD_DIRECTIVES } from 'ng2-uploader';
+//import { Ng2UploaderModule } from 'ng2-uploader';
+
+//import { FileUploader } from 'ng2-file-upload';
+//import { FileUploader } from '../../../node_modules/ng2-file-upload';
+
+//import { FileUploader } from '../../../ng2-file-upload';
 
 import { RecommendationButtonComponent } from './recommendation-button.component';
 import { HeaderComponent } from './header.component';
@@ -13,7 +18,6 @@ import { LoadingComponent } from './loading/loading.component';
   imports: [CommonModule, MaterialModule.forRoot()],
   declarations: [
     RecommendationButtonComponent,
-    UPLOAD_DIRECTIVES,
     HeaderComponent,
     BackButtonComponent,
     LoadingComponent
@@ -21,7 +25,6 @@ import { LoadingComponent } from './loading/loading.component';
   providers: [],
   exports: [
     CommonModule,
-    UPLOAD_DIRECTIVES,
     RecommendationButtonComponent,
     FormsModule,
     ReactiveFormsModule,

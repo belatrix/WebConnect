@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
+//import { CommonModule } from "@angular/common";
 
 import { HomeComponent } from "./home.component";
 import { TabGroupComponent } from "./tab-group/tab-group.component";
@@ -11,6 +11,7 @@ import { UserInfoComponent } from "../account/user-info.component";
 
 import { ActivityComponent } from "../activity/activity.component";
 import { RankingComponent } from "../ranking/ranking.component";
+import { RankingItemComponent } from "../ranking/ranking-item.component";
 
 import { TopTagsComponent } from "../top-tags/top-tags.component";
 import { homeRoutes } from "./home.routes";
@@ -26,12 +27,13 @@ import { SharedModule } from "../shared/shared.module";
     EditAccountComponent,
     RankingComponent,
     RankingDetailComponent,
+    RankingItemComponent,
     TopTagsComponent,
     UserInfoComponent
   ],
   imports: [
     homeRoutes,
-    CommonModule,
+    //CommonModule,
     SharedModule
   ],
   providers: []

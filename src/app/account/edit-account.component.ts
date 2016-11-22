@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 
 import { Employee } from "../shared/employee.model";
 import { EmployeeService } from "../core/employee.service";
+//import { FileUploader } from 'ng2-file-upload';
 
 @Component({
   selector: 'app-edit-account',
@@ -22,7 +23,6 @@ export class EditAccountComponent implements OnInit {
   private response: any = {};
 
   uploadFile: any;
-  hasBaseDropZoneOver: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -31,16 +31,30 @@ export class EditAccountComponent implements OnInit {
     private router: Router
   ) { }
 
+  public url;
+  //public uploader:FileUploader = new FileUploader({url: this.url});
+  public hasBaseDropZoneOver:boolean = false;
+  public hasAnotherDropZoneOver:boolean = false;
+
+  public fileOverBase(e:any):void {
+    this.hasBaseDropZoneOver = e;
+  }
+
+  public fileOverAnother(e:any):void {
+    this.hasAnotherDropZoneOver = e;
+  }
+
   ngOnInit() {
     let employee = this.localStorageService.getItem('loggedUser');
     let employeeDetailsP = this.employeeService.getEmployeeDetails(employee.user_id);
 
     this.zone = new NgZone({ enableLongStackTrace: false });
-    this.basicOptions = {
-      url: 'http://belatrix-connect.herokuapp.com:80/api/employee/'+employee.user_id+'/avatar',
-      authToken: employee.token,
-      authTokenPrefix: 'Token'
-    };
+    this.url = 'http://belatrix-connect.herokuapp.com:80/api/employee/'+employee.user_id+'/avatar/';
+    // this.basicOptions = {
+    //   url: 'http://belatrix-connect.herokuapp.com:80/api/employee/'+employee.user_id+'/avatar/',
+    //   authToken: employee.token,
+    //   authTokenPrefix: 'Token'
+    // };
 
     Promise.all([employeeDetailsP])
       .then(values => {
