@@ -14,6 +14,7 @@ export class SharedDataService {
 export class SharedData {
   public title: string = '';
   public contactsPage: ContactsPage = new ContactsPage();
+  public recommendationPage: RecommendationPage = new RecommendationPage();
 
   constructor() {}
 }
@@ -21,6 +22,12 @@ export class SharedData {
 export class ContactsPage {
   public selectedUser: Employee = null;
   public selectUser: boolean = false;
+  
+  constructor() {}
+}
+
+export class RecommendationPage {
+  public selectedUser: Employee = null;
   
   constructor() {}
 }

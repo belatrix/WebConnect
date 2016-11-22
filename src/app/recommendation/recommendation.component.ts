@@ -18,7 +18,11 @@ export class RecommendationComponent extends AppPage implements OnInit {
    }
 
   ngOnInit() {
-    if (this.sharedDataService.sharedData.contactsPage.selectedUser) {
+    if (this.sharedDataService.sharedData.recommendationPage.selectedUser) {
+      this.selectedUser = this.sharedDataService.sharedData.recommendationPage.selectedUser;
+      this.sharedDataService.sharedData.recommendationPage.selectedUser = null;
+    }
+    else if (this.sharedDataService.sharedData.contactsPage.selectedUser) {
       this.selectedUser = this.sharedDataService.sharedData.contactsPage.selectedUser;
       this.sharedDataService.sharedData.contactsPage.selectedUser = null;
     }

@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {Router} from "@angular/router";
+
+import { Employee } from "./employee.model";
+import { SharedDataService } from "../core/sharedData.service";
 
 @Component({
   selector: 'app-recommendation-button',
@@ -11,10 +14,16 @@ import {Router} from "@angular/router";
   styleUrls: ['recommendation-button.component.css']
 })
 export class RecommendationButtonComponent implements OnInit {
+  
+  @Input()
+  employee: Employee;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private sharedDataService: SharedDataService) { }
 
   navigateTo() {
+    if (this.employee) {
+      this.sharedDataService.sharedData.recommendationPage.selectedUser = this.employee;
+    }
     this.router.navigate(['../../recommendation']);
   }
 
