@@ -11,6 +11,7 @@ import { EventsComponent } from "./events/events.component";
 import { SettingsComponent } from "./settings/settings.component";
 import { AboutComponent } from "./about/about.component";
 import { AccountComponent } from "./account/account.component";
+import { CategoriesComponent } from "./categories/categories.component";
 
 const APP_ROUTES: Routes = [
   {path: 'login', component: LogInComponent},
@@ -22,6 +23,7 @@ const APP_ROUTES: Routes = [
   {path: 'events', component: EventsComponent, canActivate: [AuthenticationGuard]},
   {path: 'profile/:id', component: AccountComponent, canActivate: [AuthenticationGuard]},
   {path: 'settings', component: SettingsComponent, canActivate: [AuthenticationGuard]},
+  {path: 'categories', component: CategoriesComponent, canActivate: [AuthenticationGuard]},
   {path: '', redirectTo: '/login', pathMatch: 'full'}
   /*{ path: '**', component: PageNotFoundComponent }*/
 ];

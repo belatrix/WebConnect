@@ -1,0 +1,10 @@
+<div *ngIf="isLoading">
+  <app-loading></app-loading>
+</div>
+<div *ngIf="!isLoading">
+  <md-nav-list>
+    <md-list-item *ngFor="let category of categoryList" (click)="onCategoryClick(category)">
+      <span>{{category.name}}</span>
+    </md-list-item>
+  </md-nav-list>
+</div>

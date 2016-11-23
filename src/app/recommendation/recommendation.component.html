@@ -5,6 +5,7 @@
     <span md-line>{{selectedUser.first_name + ' ' + selectedUser.last_name}}</span>
     <span md-line>lvl. {{selectedUser.level}}</span>
   </a>
+  <a md-list-item  (click)="selectCategory()">{{ selectedCategory ? selectedCategory.name : 'Select category' }}</a>
 </md-nav-list>
 
 <app-back-button></app-back-button>

@@ -10,6 +10,7 @@ import {HttpService} from "./httpService";
 import { SharedDataService } from "./sharedData.service";
 import { ActivityService } from "./activity.service";
 import { StarService } from "./star.service";
+import { CategoryService } from "./category.service";
 
 @NgModule({
   imports: [CommonModule],
@@ -23,7 +24,8 @@ import { StarService } from "./star.service";
     HttpService,
     SharedDataService,
     ActivityService,
-    StarService
+    StarService,
+    CategoryService
   ],
   exports: []
 })

@@ -17,6 +17,7 @@ import { AboutComponent } from './about/about.component';
 import { SettingsComponent } from './settings/settings.component';
 import { HomeModule } from "./home/home.module";
 import { SharedModule } from "./shared/shared.module";
+import { CategoriesComponent } from './categories/categories.component';
 
 //import { UPLOAD_DIRECTIVES } from 'ng2-uploader';
 
@@ -30,7 +31,8 @@ import { SharedModule } from "./shared/shared.module";
     ContactsComponent,
     EventsComponent,
     AboutComponent,
-    SettingsComponent
+    SettingsComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,
