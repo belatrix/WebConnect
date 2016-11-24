@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { LocalStorageService } from "../core/local-storage.service";
 import { EmployeeService } from "../core/employee.service";
 import { Employee } from "../shared/employee.model";
+import { CategoryService } from "../core/category.service";
 
 @Component({
   templateUrl: 'account.component.html',
@@ -12,6 +13,7 @@ import { Employee } from "../shared/employee.model";
 export class AccountComponent implements OnInit {
   employeeDetails: Employee = new Employee();
   employeeStarList;
+  categoryList;
   isLoading: boolean = true;
   isCurrentUser: boolean;
 
@@ -19,6 +21,7 @@ export class AccountComponent implements OnInit {
     private localStorageService: LocalStorageService,
     private router: Router,
     private route: ActivatedRoute,
+    private categoryService: CategoryService,
     private employeeService: EmployeeService) { }
 
   ngOnInit() {
@@ -33,18 +36,50 @@ export class AccountComponent implements OnInit {
     }
     let employeeDetailsP = this.employeeService.getEmployeeDetails(userPK);
     let employeestarListP = this.employeeService.getEmployeeStarList(userPK);
+    let categoryListP = this.categoryService.getAllCategories();
 
-    Promise.all([employeeDetailsP, employeestarListP])
+    Promise.all([employeeDetailsP, employeestarListP, categoryListP])
       .then(values => {
         console.log(values);
         this.employeeDetails = values[0];
         this.employeeStarList = values[1].results;
+        this.categoryList = values[2];
         this.isLoading = false;
+        this.formatSubCategory();
       })
-      .catch(error => console.log("error"));
+      .catch((error) => {
+        console.log(error);
+        console.log("error");
+      });
   }
 
   loadEditProfile(pk: number) {
     this.router.navigateByUrl('/home/account/edit');
   }
+
+  formatSubCategory(){
+    for (var i = 0; i < this.employeeStarList.length; ++i) {
+      this.employeeStarList[i].subCategoryName = this.getCategoryName(this.employeeStarList[i].category, this.employeeStarList[i].subcategory);
+    }
+  }
+
+  // TODO
+  // refactor this loop with ES5 array functions
+  getCategoryName(category, subCategory){
+    let subcategoryName = "default";
+    for (var i = 0; i < this.categoryList.length; i++) {
+      if (this.categoryList[i].pk == category) {
+        for (var j = 0; j < this.categoryList[i].subcategories.length; j++) {
+          if(this.categoryList[i].subcategories[j].pk == subCategory) {
+            subcategoryName = this.categoryList[i].subcategories[j].name;
+            break;
+          }
+        }
+        break;
+      }
+    }
+    return subcategoryName;
+  }
+
+
 }
