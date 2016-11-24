@@ -18,6 +18,7 @@ import { SettingsComponent } from './settings/settings.component';
 import { HomeModule } from "./home/home.module";
 import { SharedModule } from "./shared/shared.module";
 import { CategoriesComponent } from './categories/categories.component';
+import { SubCategoriesComponent } from './sub-categories/sub-categories.component';
 
 //import { UPLOAD_DIRECTIVES } from 'ng2-uploader';
 
@@ -32,7 +33,8 @@ import { CategoriesComponent } from './categories/categories.component';
     EventsComponent,
     AboutComponent,
     SettingsComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    SubCategoriesComponent
   ],
   imports: [
     BrowserModule,

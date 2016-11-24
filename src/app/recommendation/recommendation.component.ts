@@ -5,6 +5,7 @@ import { AppPage } from "../core/appPage";
 import { SharedDataService } from "../core/sharedData.service";
 import { Employee } from "../shared/employee.model";
 import { Category } from "../shared/category.model";
+import { SubCategory } from "../shared/sub-category.model";
 
 @Component({
   templateUrl: './recommendation.component.html',
@@ -14,6 +15,7 @@ export class RecommendationComponent extends AppPage implements OnInit {
 
   private selectedUser: Employee;
   private selectedCategory: Category;
+  private selectedSubCategory: SubCategory;
   
   constructor(private router: Router, private sharedDataService: SharedDataService) {
     super('Give a recommendation');
@@ -22,7 +24,6 @@ export class RecommendationComponent extends AppPage implements OnInit {
   ngOnInit() {
     if (this.sharedDataService.sharedData.recommendationPage.selectedUser) {
       this.selectedUser = this.sharedDataService.sharedData.recommendationPage.selectedUser;
-      this.sharedDataService.sharedData.recommendationPage.selectedUser = null;
     }
     else if (this.sharedDataService.sharedData.contactsPage.selectedUser) {
       this.selectedUser = this.sharedDataService.sharedData.contactsPage.selectedUser;
@@ -32,6 +33,11 @@ export class RecommendationComponent extends AppPage implements OnInit {
     if (this.sharedDataService.sharedData.categoriesPage.selectedCategory) {
       this.selectedCategory = this.sharedDataService.sharedData.categoriesPage.selectedCategory;
       this.sharedDataService.sharedData.categoriesPage.selectedCategory = null;
+    }
+
+    if (this.sharedDataService.sharedData.subCategoriesPage.selectedSubCategory) {
+      this.selectedSubCategory = this.sharedDataService.sharedData.subCategoriesPage.selectedSubCategory;
+      this.sharedDataService.sharedData.subCategoriesPage.selectedSubCategory = null;
     }
   }
 

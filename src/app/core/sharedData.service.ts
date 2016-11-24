@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { LocalStorageService } from "./local-storage.service";
 import { Employee } from "../shared/employee.model";
 import { Category } from "../shared/category.model";
+import { SubCategory } from "../shared/sub-category.model";
 
 @Injectable()
 export class SharedDataService {
@@ -17,6 +18,7 @@ export class SharedData {
   public contactsPage: ContactsPage = new ContactsPage();
   public recommendationPage: RecommendationPage = new RecommendationPage();
   public categoriesPage: CategoriesPage = new CategoriesPage();
+  public subCategoriesPage: SubCategoriesPage = new SubCategoriesPage();
 
   constructor() {}
 }
@@ -31,6 +33,13 @@ export class ContactsPage {
 export class CategoriesPage {
   public selectedCategory: Category = null;
   public selectCategory: boolean = false;
+  
+  constructor() {}
+}
+
+export class SubCategoriesPage {
+  public selectedSubCategory: SubCategory = null;
+  public selectSubCategory: boolean = false;
   
   constructor() {}
 }

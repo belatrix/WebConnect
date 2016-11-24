@@ -12,6 +12,7 @@ import { SettingsComponent } from "./settings/settings.component";
 import { AboutComponent } from "./about/about.component";
 import { AccountComponent } from "./account/account.component";
 import { CategoriesComponent } from "./categories/categories.component";
+import { SubCategoriesComponent } from "./sub-categories/sub-categories.component";
 
 const APP_ROUTES: Routes = [
   {path: 'login', component: LogInComponent},
@@ -24,6 +25,7 @@ const APP_ROUTES: Routes = [
   {path: 'profile/:id', component: AccountComponent, canActivate: [AuthenticationGuard]},
   {path: 'settings', component: SettingsComponent, canActivate: [AuthenticationGuard]},
   {path: 'categories', component: CategoriesComponent, canActivate: [AuthenticationGuard]},
+  {path: 'sub-categories/:categoryId', component: SubCategoriesComponent, canActivate: [AuthenticationGuard]},
   {path: '', redirectTo: '/login', pathMatch: 'full'}
   /*{ path: '**', component: PageNotFoundComponent }*/
 ];

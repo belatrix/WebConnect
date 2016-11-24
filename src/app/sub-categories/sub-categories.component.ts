@@ -3,26 +3,27 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { LocalStorageService } from "../core/local-storage.service";
 import { CategoryService } from "../core/category.service";
-import { Category } from "../shared/category.model";
+import { SubCategory } from "../shared/sub-category.model";
 import { AppPage } from "../core/appPage";
 import { SharedDataService } from "../core/sharedData.service";
 
 @Component({
-  selector: 'app-categories',
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.css']
+  selector: 'app-sub-categories',
+  templateUrl: './sub-categories.component.html',
+  styleUrls: ['./sub-categories.component.css']
 })
-export class CategoriesComponent extends AppPage implements OnInit {
+export class SubCategoriesComponent extends AppPage implements OnInit {
 
-  categoryList: Category[] = new Array<Category>();
+  subCategoryList: SubCategory[] = new Array<SubCategory>();
   isLoading: boolean = false;
 
   constructor(
     private localStorageService: LocalStorageService,
     private categoryService: CategoryService,
     private sharedDataService: SharedDataService,
+    private route: ActivatedRoute,
     private router: Router) {
-    super('Categories');
+    super('Sub Categories');
    }
 
   ngOnInit() {
@@ -32,17 +33,17 @@ export class CategoriesComponent extends AppPage implements OnInit {
   search() {
     this.isLoading = true;
     let loggedUser = this.localStorageService.getItem('loggedUser');
-    this.categoryService.getAllCategories()
+    this.categoryService.getCategorySubCategories(+this.route.snapshot.params['categoryId'])
       .then(data => {
-        this.categoryList = data;
+        this.subCategoryList = data;
         this.isLoading = false;
       })
       .catch(error => console.log("error"));
   }
 
-  onCategoryClick(category: Category) {
-    this.sharedDataService.sharedData.categoriesPage.selectedCategory = category;
-    this.router.navigate(['/sub-categories/', category.pk]);
+  onSubCategoryClick(subCategory: SubCategory) {
+    this.sharedDataService.sharedData.subCategoriesPage.selectedSubCategory = subCategory;
+    this.router.navigate(['/recommendation']);
   }
 
 }
