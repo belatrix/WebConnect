@@ -5,6 +5,7 @@ import {EditAccountComponent} from "../../account/edit-account.component";
 import {ActivityComponent} from "../../activity/activity.component";
 import {RankingComponent} from "../../ranking/ranking.component";
 import {TopTagsComponent} from "../../top-tags/top-tags.component";
+import {TopTagsListComponent} from "../../top-tags/top-tags-list.component";
 
 export const TAB_GROUP_ROUTES: Routes = [
   {path: '', redirectTo: 'account', pathMatch: 'full'},
@@ -12,5 +13,6 @@ export const TAB_GROUP_ROUTES: Routes = [
   {path: 'account/edit', component: EditAccountComponent},
   {path: 'activity', component: ActivityComponent},
   {path: 'ranking', component: RankingComponent},
-  {path: 'top-tags', component: TopTagsComponent}
+  {path: 'top-tags', component: TopTagsComponent},
+  {path: 'top-tags/list', component: TopTagsListComponent}
 ];

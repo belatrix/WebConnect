@@ -1,0 +1,14 @@
+<div *ngIf="isLoading">
+  <app-loading></app-loading>
+</div>
+<div *ngIf="!isLoading">
+   <md-nav-list>
+    <md-list>
+      <top-tags-item [source]="starTopEmployeeList"></top-tags-item>
+    </md-list>
+   </md-nav-list>
+</div>
+
+
+
+

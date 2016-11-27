@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { StarKeyword } from "../shared/starKeyword.model";
 import { StarService } from "../core/star.service";
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: 'top-tags.component.html',
@@ -13,7 +14,7 @@ export class TopTagsComponent implements OnInit {
   isLoading: boolean = false;
   searchText: string = '';
 
-  constructor(private starService: StarService) { }
+  constructor(private starService: StarService, private router: Router) { }
 
   ngOnInit() {
     this.search();
@@ -27,6 +28,12 @@ export class TopTagsComponent implements OnInit {
         this.isLoading = false;
       })
       .catch(error => console.log("error"));
+  }
+
+  getTopTagsListById(starKeyword: StarKeyword){
+        const _path = '/home/top-tags/list';
+        this.starService.setStarKeyword(starKeyword);
+        this.router.navigateByUrl(_path);
   }
 
 }

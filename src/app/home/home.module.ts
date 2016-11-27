@@ -14,6 +14,8 @@ import { RankingComponent } from "../ranking/ranking.component";
 import { RankingItemComponent } from "../ranking/ranking-item.component";
 
 import { TopTagsComponent } from "../top-tags/top-tags.component";
+import { TopTagsListComponent } from "../top-tags/top-tags-list.component";
+import { TopTagsItemComponent } from "../top-tags/top-tags-item.component";
 import { homeRoutes } from "./home.routes";
 import { SharedModule } from "../shared/shared.module";
 
@@ -29,6 +31,8 @@ import { SharedModule } from "../shared/shared.module";
     RankingDetailComponent,
     RankingItemComponent,
     TopTagsComponent,
+    TopTagsListComponent,
+    TopTagsItemComponent,
     UserInfoComponent
   ],
   imports: [

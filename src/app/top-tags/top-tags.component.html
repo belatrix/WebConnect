@@ -8,7 +8,7 @@
 </div>
 <div *ngIf="!isLoading">
   <md-list>
-    <md-list-item *ngFor="let tag of tagsList">
+    <md-list-item *ngFor="let tag of tagsList" (click)="getTopTagsListById(tag)">
       {{tag.name}}
     </md-list-item>
   </md-list>
