@@ -7,5 +7,8 @@
   </a>
   <a md-list-item  (click)="selectCategory()">{{ selectedSubCategory ? selectedCategory.name + ' >> ' + selectedSubCategory.name : 'Select category' }}</a>
 </md-nav-list>
-
+<md-input placeholder="Comment" [(ngModel)]="comment" >
+</md-input>
+<br>
+<button md-button (click)="saveClick()">DONE</button>
 <app-back-button></app-back-button>

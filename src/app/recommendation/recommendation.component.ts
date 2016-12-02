@@ -16,6 +16,7 @@ export class RecommendationComponent extends AppPage implements OnInit {
   private selectedUser: Employee;
   private selectedCategory: Category;
   private selectedSubCategory: SubCategory;
+  private comment: string = '';
   
   constructor(private router: Router, private sharedDataService: SharedDataService) {
     super('Give a recommendation');
@@ -49,6 +50,10 @@ export class RecommendationComponent extends AppPage implements OnInit {
   selectCategory() {
     this.sharedDataService.sharedData.categoriesPage.selectCategory = true;
     this.router.navigate(['/categories']);
+  }
+
+  saveClick() {
+    
   }
 
 }
