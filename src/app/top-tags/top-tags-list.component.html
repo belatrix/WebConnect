@@ -2,6 +2,11 @@
   <app-loading></app-loading>
 </div>
 <div *ngIf="!isLoading">
+
+<md-toolbar [color]="primary" (click)="backToTopTags()">
+ <i class="material-icons">arrow_back</i> <span> {{nameTag}}</span>
+</md-toolbar>
+
    <md-nav-list>
     <md-list>
       <top-tags-item [source]="starTopEmployeeList"></top-tags-item>

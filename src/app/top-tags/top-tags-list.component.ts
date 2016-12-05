@@ -10,10 +10,10 @@ import { Router } from '@angular/router';
 })
 export class TopTagsListComponent implements OnInit {
 
-  star:StarKeyword;
+  star:StarKeyword = null;
   isLoading: boolean = false;
   starTopEmployeeList: StarTopEmployee[] = new Array<StarTopEmployee>();
-
+  nameTag: string="";
   constructor(
     private starService: StarService, 
     private router: Router) 
@@ -22,9 +22,10 @@ export class TopTagsListComponent implements OnInit {
   ngOnInit() {
     this.star = this.starService.getStarKeyword();
     if(this.star!=null){
+      this.nameTag = this.star.name;
       this.getStarTopEmployeeList();
     } else {
-      this.router.navigateByUrl('/home/top-tags');
+      this.backToTopTags();
     }
   }
 
@@ -36,6 +37,10 @@ export class TopTagsListComponent implements OnInit {
         this.isLoading = false;
       })
       .catch(error => console.log("error"));
+  }
+
+  backToTopTags(){
+      this.router.navigateByUrl('/home/top-tags');
   }
 
 }

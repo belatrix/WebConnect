@@ -31,7 +31,7 @@ export class TopTagsComponent implements OnInit {
   }
 
   getTopTagsListById(starKeyword: StarKeyword){
-        const _path = '/home/top-tags/list';
+        const _path = '/home/top-tags/'+starKeyword.pk+'/list';
         this.starService.setStarKeyword(starKeyword);
         this.router.navigateByUrl(_path);
   }
