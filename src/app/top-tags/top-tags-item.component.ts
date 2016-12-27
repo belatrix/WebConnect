@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { StarService } from "../core/star.service";
-import { StarKeyword } from "../shared/starKeyword.model";
 import { StarTopEmployee } from "../shared/starTopEmployee.model";
 import { Router } from '@angular/router';
 import { LocalStorageService } from "../core/local-storage.service";

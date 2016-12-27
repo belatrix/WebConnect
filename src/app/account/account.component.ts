@@ -40,7 +40,6 @@ export class AccountComponent implements OnInit {
 
     Promise.all([employeeDetailsP, employeestarListP, categoryListP])
       .then(values => {
-        console.log(values);
         this.employeeDetails = values[0];
         this.employeeStarList = values[1].results;
         this.categoryList = values[2];

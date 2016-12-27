@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { StarService } from "../core/star.service";
-import { StarKeyword } from "../shared/starKeyword.model";
+//import { StarKeyword } from "../shared/starKeyword.model";
 import { StarTopEmployee } from "../shared/starTopEmployee.model";
 import { Router } from '@angular/router';
 
@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
   templateUrl: 'top-tags-list.component.html'
 })
 export class TopTagsListComponent implements OnInit {
-
-  star:StarKeyword = null;
+ 
+  star:Connect.Models.IStarKeyword;
   isLoading: boolean = false;
-  starTopEmployeeList: StarTopEmployee[] = new Array<StarTopEmployee>();
+  starTopEmployeeList: Connect.Models.IStarKeyword[];
   nameTag: string="";
   constructor(
     private starService: StarService, 
@@ -31,16 +31,19 @@ export class TopTagsListComponent implements OnInit {
 
   getStarTopEmployeeList() {
     this.isLoading = true;
-    this.starService.getTopTagsById(this.star.pk)
-      .then(data => {
-        this.starTopEmployeeList = data.results;
-        this.isLoading = false;
-      })
-      .catch(error => console.log("error"));
+    let self = this;
+       this.starService.getTopTagsById(this.star.pk)
+       .subscribe(result=>{
+           self.starTopEmployeeList=result;
+           this.isLoading =  !this.isLoading;
+       }, error=>{
+           console.log(error);
+       });
   }
 
   backToTopTags(){
       this.router.navigateByUrl('/home/top-tags');
   }
-
 }
+
+

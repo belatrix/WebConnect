@@ -25,6 +25,13 @@ export class HttpService {
       .catch(this.handleError);
   }
 
+  get2<T>(url: string): Observable<T> {
+    let options = this.getHttpOptions();
+    return this.http.get(this.baseUrl + url, options)
+      .map((res: Response) => res.json().results)
+      .catch(this.handleError);
+  }
+
   patch<T>(url: string, data): Promise<T> {
     let options = this.getHttpOptions();
     return this.http.patch(this.baseUrl + url, data, options)

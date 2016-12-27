@@ -58,7 +58,6 @@ export class EditAccountComponent implements OnInit {
 
     Promise.all([employeeDetailsP])
       .then(values => {
-        console.log(values);
         this.employeeDetails = values[0];
         this.isLoading = false;
         this.initForm();

@@ -12,7 +12,6 @@ export class StarDetailComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.stars)
   }
 
 }
